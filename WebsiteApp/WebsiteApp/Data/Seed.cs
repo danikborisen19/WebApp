@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using WebsiteApp.Data.Enum;
+﻿using WebsiteApp.Data.Enum;
 using WebsiteApp.Models;
 
 namespace WebsiteApp.Data
@@ -10,9 +9,9 @@ namespace WebsiteApp.Data
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+                var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
 
-                context.Database.EnsureCreated();
+                context?.Database.EnsureCreated();
 
                 if (!context.Clubs.Any())
                 {

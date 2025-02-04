@@ -10,8 +10,7 @@ namespace WebsiteApp.Data
 
         }
         public DbSet<Race> Races { get; set; }
-        public DbSet<Club> CLubs { get; set; }
-        public object Clubs { get; internal set; }
+        public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }
 }

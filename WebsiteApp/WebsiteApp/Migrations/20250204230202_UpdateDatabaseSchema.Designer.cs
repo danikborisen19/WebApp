@@ -11,8 +11,8 @@ using WebsiteApp.Data;
 namespace WebsiteApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250201004218_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250204230202_UpdateDatabaseSchema")]
+    partial class UpdateDatabaseSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,7 +102,7 @@ namespace WebsiteApp.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("CLubs");
+                    b.ToTable("Clubs");
                 });
 
             modelBuilder.Entity("WebsiteApp.Models.Race", b =>
@@ -127,6 +127,9 @@ namespace WebsiteApp.Migrations
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RaceCategory")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
