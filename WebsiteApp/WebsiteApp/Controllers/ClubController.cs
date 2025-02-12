@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebsiteApp.Data;
+using WebsiteApp.Models;
 
 namespace WebsiteApp.Controllers
 {
@@ -13,8 +14,8 @@ namespace WebsiteApp.Controllers
         }
         public IActionResult Index()
         {
-            var clubs = _context.Clubs.ToList();
-            return View();
+            List<Club> clubs = _context.Clubs.ToList();
+            return View(clubs);
         }
     }
 }
