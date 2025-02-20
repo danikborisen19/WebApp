@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using WebsiteApp.Data;
 using WebsiteApp.Interfaces;
 using WebsiteApp.Models;
+using WebsiteApp.Repository;
 
 namespace WebsiteApp.Controllers
 {
@@ -23,6 +24,20 @@ namespace WebsiteApp.Controllers
         {
             Race race = await _raceRepository.GetByIdAsync(id);
                 return View(race);
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Race race)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(race);
+            }
+            _raceRepository.Add(race);
+            return RedirectToAction("Index");
         }
     }
 }
