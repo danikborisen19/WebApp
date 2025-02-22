@@ -1,14 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using WebsiteApp.Data;
+using WebsiteApp.Helpers;
 using WebsiteApp.Interfaces;
 using WebsiteApp.Repository;
+using WebsiteApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
-    builder.Services.AddScoped<IRaceRepository, RaceRepository>();
+builder.Services.AddScoped<IRaceRepository, RaceRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
